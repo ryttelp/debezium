@@ -1,0 +1,20 @@
+{
+    "name": "sqlserver-sink-connector",
+    "config": {
+        "connector.class": "io.debezium.connector.jdbc.JdbcSinkConnector",
+        "collection.name.format": "dbo.users_sink",
+       
+        "connection.url": "jdbc:sqlserver://mssql:1433;databaseName=kidok;encrypt=false",
+        "connection.username": "sa",
+        "connection.password": "YourNew@StrongPwd123",
+        "tasks.max": "1",
+        "topics": "kidok.kidok.dbo.users",
+       
+        "insert.mode": "upsert",
+        "delete.enabled": "true",
+       
+        "primary.key.mode": "record_key",
+        "primary.key.fields": "user_id",
+        "schema.evolution": "none"
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "name": "sqlserver-connector",
+    "config": {
+        "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
+        "database.hostname": "mssql",
+        "database.port": "1433",
+        "database.user": "sa",
+        "database.password": "YourNew@StrongPwd123",
+        "database.dbname": "kidok",
+        "database.server.name": "mssql",
+        "topic.prefix": "kidok",
+        "database.names": "kidok",
+        "database.server.id": "10000",
+        "table.include.list": "dbo.users",
+        "database.encrypt": false,
+        "schema.history.internal.kafka.topic": "schema.history.internal.kafka.topic",
+        "schema.history.internal.kafka.bootstrap.servers": "kafka:9092",
+
+        "topic.naming.strategy": "io.debezium.schema.SchemaTopicNamingStrategy"
+    }
+}
