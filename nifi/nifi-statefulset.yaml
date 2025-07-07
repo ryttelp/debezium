@@ -35,4 +35,11 @@ spec:
       accessModes: ["ReadWriteOnce"]
       resources:
         requests:
+          storage: 1Gi            
+  - metadata:
+      name: logs
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
           storage: 1Gi
