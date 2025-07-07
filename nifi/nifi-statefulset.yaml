@@ -16,6 +16,11 @@ spec:
       containers:
       - name: nifi
         image: apache/nifi:1.23.2
+        env:
+            - name: NIFI_WEB_HTTP_PORT
+              value: "8080"
+            - name: NIFI_WEB_HTTPS_PORT
+              value: "8443"
         ports:
         - containerPort: 8080
           name: http
