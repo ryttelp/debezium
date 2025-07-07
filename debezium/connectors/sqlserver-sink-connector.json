@@ -1,5 +1,5 @@
 {
-    "name": "sqlserver-sink-connector",
+    "name": "sqlserver-sink-connector-3",
     "config": {
         "connector.class": "io.debezium.connector.jdbc.JdbcSinkConnector",
         "collection.name.format": "dbo.users_sink",
