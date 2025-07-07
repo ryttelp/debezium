@@ -37,7 +37,7 @@ spec:
             secretKeyRef:
               key: SA_PASSWORD
               name: mssql-password-secret
-        image: mcr.microsoft.com/mssql/server:2022-latest
+        image: mcr.microsoft.com/azure-sql-edge:latest
         imagePullPolicy: IfNotPresent
         name: mssql
         ports:

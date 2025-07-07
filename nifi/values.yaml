@@ -1,0 +1,27 @@
+# Podstawowa konfiguracja
+replicaCount: 1
+image:
+  repository: apache/nifi
+  tag: 1.23.2
+  pullPolicy: IfNotPresent
+
+# Konfiguracja persystencji danych
+persistence:
+  enabled: true
+  storageClass: "standard"
+  accessMode: ReadWriteOnce
+  dataStorage:
+    size: 10Gi
+  flowfileRepoStorage:
+    size: 10Gi
+  contentRepoStorage:
+    size: 10Gi
+  provenanceRepoStorage:
+    size: 10Gi
+  logStorage:
+    size: 5Gi
+
+# Konfiguracja serwisu
+service:
+  type: NodePort
+  httpPort: 8080
