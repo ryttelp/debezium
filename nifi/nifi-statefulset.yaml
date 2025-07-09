@@ -21,6 +21,25 @@ spec:
               value: "0.0.0.0"            
             - name: NIFI_WEB_HTTPS_PORT
               value: "8443"
+ # Ścieżki do własnych keystore/truststore wygenerowanych z odpowiednimi SAN
+            - name: NIFI_SECURITY_KEYSTORE
+              value: "/opt/nifi/certs/keystore.jks"
+            - name: NIFI_SECURITY_KEYSTORE_TYPE
+              value: "JKS"
+            - name: NIFI_SECURITY_KEYSTORE_PASSWD
+              valueFrom:
+                secretKeyRef:
+                  name: nifi-tls-secret
+                  key: keystore-password
+            - name: NIFI_SECURITY_TRUSTSTORE
+              value: "/opt/nifi/certs/truststore.jks"
+            - name: NIFI_SECURITY_TRUSTSTORE_TYPE
+              value: "JKS"
+            - name: NIFI_SECURITY_TRUSTSTORE_PASSWD
+              valueFrom:
+                secretKeyRef:
+                  name: nifi-tls-secret
+                  key: truststore-password
         ports:
         - containerPort: 8080
           name: http
@@ -33,6 +52,8 @@ spec:
           mountPath: /opt/nifi/nifi-current/data
         - name: logs
           mountPath: /opt/nifi/nifi-current/logs
+        - name: nifi-certs
+          mountPath: /opt/nifi/certs
   volumeClaimTemplates:
   - metadata:
       name: data
