@@ -15,31 +15,19 @@ spec:
     spec:
       containers:
       - name: nifi
-        image: apache/nifi:latest
-        env:
-            - name: NIFI_WEB_HTTP_HOST
-              value: "0.0.0.0"            
-            - name: NIFI_WEB_HTTPS_PORT
-              value: "8443"
- # Ścieżki do własnych keystore/truststore wygenerowanych z odpowiednimi SAN
-            - name: NIFI_SECURITY_KEYSTORE
-              value: "/opt/nifi/certs/keystore.jks"
-            - name: NIFI_SECURITY_KEYSTORE_TYPE
-              value: "JKS"
-            - name: NIFI_SECURITY_KEYSTORE_PASSWD
-              valueFrom:
-                secretKeyRef:
-                  name: nifi-tls-secret
-                  key: keystore-password
-            - name: NIFI_SECURITY_TRUSTSTORE
-              value: "/opt/nifi/certs/truststore.jks"
-            - name: NIFI_SECURITY_TRUSTSTORE_TYPE
-              value: "JKS"
-            - name: NIFI_SECURITY_TRUSTSTORE_PASSWD
-              valueFrom:
-                secretKeyRef:
-                  name: nifi-tls-secret
-                  key: truststore-password
+        image: quay.io/p_ryttel/nifi:1.23.2
+        imagePullPolicy: Always
+        env:  
+            - name: NIFI_WEB_HTTP_PORT
+              value: "8080"
+            # - name: NIFI_WEB_HTTPS_HOST
+            #   value: ""            
+            # - name: NIFI_WEB_HTTPS_PORT
+            #   value: ""
+            # - name: SINGLE_USER_CREDENTIALS_USERNAME
+            #   value: "nifi"
+            # - name: SINGLE_USER_CREDENTIALS_USERNAME
+            #   value: "nifipassword"
         ports:
         - containerPort: 8080
           name: http
@@ -52,8 +40,6 @@ spec:
           mountPath: /opt/nifi/nifi-current/data
         - name: logs
           mountPath: /opt/nifi/nifi-current/logs
-        - name: nifi-certs
-          mountPath: /opt/nifi/certs
   volumeClaimTemplates:
   - metadata:
       name: data
