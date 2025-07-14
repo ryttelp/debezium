@@ -13,6 +13,17 @@ spec:
       labels:
         app: nifi
     spec:
+      initContainers:
+      - name: init-conf
+        image: quay.io/p_ryttel/nifi:1.23.2
+        command: ['sh', '-c', 'cp -n /opt/nifi/nifi-current/conf/* /mnt/conf/']
+        volumeMounts:
+          - name: conf
+            mountPath: /mnt/conf
+          - name: nifi-image-conf
+            mountPath: /opt/nifi/nifi-current/conf
+            readOnly: true
+
       containers:
       - name: nifi
         image: quay.io/p_ryttel/nifi:1.23.2
