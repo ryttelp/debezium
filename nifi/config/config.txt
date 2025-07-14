@@ -1,6 +1,6 @@
 jdbc:sqlserver://<host>:<port>;databaseName=<nazwa_bazy>;user=<użytkownik>;password=<hasło>
 
-jdbc:sqlserver://mssql:1433;databaseName=kidok
+jdbc:sqlserver://mssql:1433;databaseName=kidok;encrypt=false;trustServerCertificate=true
 
 com.microsoft.sqlserver.jdbc.SQLServerDriver
 

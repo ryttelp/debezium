@@ -36,18 +36,63 @@ spec:
         - containerPort: 6007
           name: cluster
         volumeMounts:
-        - name: data
-          mountPath: /opt/nifi/nifi-current/data
+        - name: content-repository        
+          mountPath: /opt/nifi/nifi-current/content_repository
+        - name: conf
+          mountPath: /opt/nifi/nifi-current/conf
+        - name: flowfile-repository
+          mountPath: /opt/nifi/nifi-current/flowfile_repository
+        - name: provenance-repository
+          mountPath: /opt/nifi/nifi-current/provenance_repository
+        - name: database-repository
+          mountPath: /opt/nifi/nifi-current/database_repository
+        - name: state
+          mountPath: /opt/nifi/nifi-current/state
         - name: logs
           mountPath: /opt/nifi/nifi-current/logs
   volumeClaimTemplates:
   - metadata:
-      name: data
+      name: conf
     spec:
       accessModes: ["ReadWriteOnce"]
       resources:
         requests:
-          storage: 1Gi            
+          storage: 1Gi    
+  - metadata:
+      name: content-repository
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 1Gi    
+  - metadata:
+      name: flowfile-repository
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 1Gi                      
+  - metadata:
+      name: provenance-repository
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 1Gi           
+  - metadata:
+      name: database-repository
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 1Gi         
+  - metadata:
+      name: state
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 1Gi                      
   - metadata:
       name: logs
     spec:
