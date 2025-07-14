@@ -20,9 +20,6 @@ spec:
         volumeMounts:
           - name: conf
             mountPath: /mnt/conf
-          - name: nifi-image-conf
-            mountPath: /opt/nifi/nifi-current/conf
-            readOnly: true
 
       containers:
       - name: nifi
