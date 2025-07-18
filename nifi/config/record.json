@@ -1,0 +1,12 @@
+[ {
+  "user_id" : 28,
+  "username" : "agomez",
+  "email" : "agomez@example.com",
+  "password_hash" : "hashed_pwd_018",
+  "first_name" : null,
+  "last_name" : "Gomez",
+  "date_of_birth" : 2004,
+  "created_at" : 1752485504946666700,
+  "updated_at" : 1752485504946666700,
+  "is_active" : false
+} ]
