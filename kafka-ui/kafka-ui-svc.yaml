@@ -4,7 +4,6 @@ metadata:
   labels:
     app: kafka-ui
   name: kafka-ui
-  namespace: debezium
 spec:
   ports:
   - name: http
@@ -13,4 +12,4 @@ spec:
     targetPort: 8080
   selector:
     app: kafka-ui
-  type: ClusterIP
+  type: LoadBalancer
