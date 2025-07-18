@@ -8,10 +8,11 @@ def convertEpochDates(obj) {
         obj.each { k, v ->
             if ((k ==~ /(?i).*date.*|.*time.*|.*ts.*/ || k ==~ /.*_at$/)) {
                 try {
-                    long epoch = Long.parseLong(v.toString())
-                    obj[k] = formatter.format(new Date(epoch))
-                } catch (e) {
-                    // Not epoch, do nothing
+                    long epochNs = Long.parseLong(v.toString())
+                    long epochMs = (long)(epochNs / 1_000_000L)
+                    obj[k] = formatter.format(new Date(epochMs))
+                } catch (Exception e) {
+                    // log.error("Błąd parsowania daty w polu: ${k}", e)
                 }
             } else {
                 convertEpochDates(v)
