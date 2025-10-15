@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: cloudbeaver
+  name: cloudbeaver-2
 spec:
   replicas: 1
   revisionHistoryLimit: 10
@@ -49,14 +49,14 @@ spec:
             memory: 512Mi
         volumeMounts:
         - mountPath: /opt/cloudbeaver/workspace
-          name: cloudbeaver-data
+          name: cloudbeaver-data-2
       restartPolicy: Always
   volumeClaimTemplates:
   - apiVersion: v1
     kind: PersistentVolumeClaim
     metadata:
       creationTimestamp: null
-      name: cloudbeaver-data
+      name: cloudbeaver-data-2
     spec:
       accessModes:
       - ReadWriteOnce

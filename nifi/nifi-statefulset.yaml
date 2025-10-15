@@ -15,7 +15,7 @@ spec:
     spec:
       initContainers:
       - name: init-conf
-        image: quay.io/p_ryttel/nifi:1.23.2
+        image: docker.io/ryttelp/nifi:1.23.2o
         command: ['sh', '-c', 'cp -n /opt/nifi/nifi-current/conf/* /mnt/conf/']
         volumeMounts:
           - name: conf
@@ -23,7 +23,7 @@ spec:
 
       containers:
       - name: nifi
-        image: quay.io/p_ryttel/nifi:1.23.2
+        image: docker.io/ryttelp/nifi:1.23.2o
         imagePullPolicy: Always
         env:  
             - name: NIFI_WEB_HTTP_PORT
